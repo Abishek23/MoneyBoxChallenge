@@ -20,6 +20,12 @@
 		0EDB88A6208480A2009836DF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88A5208480A2009836DF /* User.swift */; };
 		0EDB88A8208480B3009836DF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88A7208480B3009836DF /* Session.swift */; };
 		0EDB88AB20848158009836DF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88AA20848158009836DF /* Extensions.swift */; };
+		0EDB88AD208482C7009836DF /* InvestorProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88AC208482C7009836DF /* InvestorProducts.swift */; };
+		0EDB88AF20848309009836DF /* ProductElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88AE20848309009836DF /* ProductElement.swift */; };
+		0EDB88B120848324009836DF /* ProductProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B020848324009836DF /* ProductProduct.swift */; };
+		0EDB88B3208483CE009836DF /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B2208483CE009836DF /* JSONNull.swift */; };
+		0EDB88B5208483F2009836DF /* JSONCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B4208483F2009836DF /* JSONCodingKey.swift */; };
+		0EDB88B720848417009836DF /* JSONAny.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B620848417009836DF /* JSONAny.swift */; };
 		753F3D52AA222B1F3E012AE9 /* Pods_MBTechnicalChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB553454701E449F140C971C /* Pods_MBTechnicalChallengeUITests.framework */; };
 		9DF64016DF544C16C34CA5D1 /* Pods_MBTechnicalChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F584796FB206BC028416628 /* Pods_MBTechnicalChallenge.framework */; };
 		E8FC3616D362642AF2E156D5 /* Pods_MBTechnicalChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080ECDA0AD9EB9E9A2A89E7F /* Pods_MBTechnicalChallengeTests.framework */; };
@@ -63,6 +69,12 @@
 		0EDB88A5208480A2009836DF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0EDB88A7208480B3009836DF /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		0EDB88AA20848158009836DF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0EDB88AC208482C7009836DF /* InvestorProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorProducts.swift; sourceTree = "<group>"; };
+		0EDB88AE20848309009836DF /* ProductElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductElement.swift; sourceTree = "<group>"; };
+		0EDB88B020848324009836DF /* ProductProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductProduct.swift; sourceTree = "<group>"; };
+		0EDB88B2208483CE009836DF /* JSONNull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
+		0EDB88B4208483F2009836DF /* JSONCodingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodingKey.swift; sourceTree = "<group>"; };
+		0EDB88B620848417009836DF /* JSONAny.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONAny.swift; sourceTree = "<group>"; };
 		33EEDE2570420F4AC7B1D84D /* Pods-MBTechnicalChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBTechnicalChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBTechnicalChallengeTests/Pods-MBTechnicalChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		4F584796FB206BC028416628 /* Pods_MBTechnicalChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBTechnicalChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		637328B9317AF614D1486DAA /* Pods-MBTechnicalChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBTechnicalChallengeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBTechnicalChallengeUITests/Pods-MBTechnicalChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +192,9 @@
 				0EDB88A320848067009836DF /* UserInformation.swift */,
 				0EDB88A5208480A2009836DF /* User.swift */,
 				0EDB88A7208480B3009836DF /* Session.swift */,
+				0EDB88AC208482C7009836DF /* InvestorProducts.swift */,
+				0EDB88AE20848309009836DF /* ProductElement.swift */,
+				0EDB88B020848324009836DF /* ProductProduct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,7 +210,10 @@
 		0EDB88A92084814E009836DF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0EDB88B2208483CE009836DF /* JSONNull.swift */,
 				0EDB88AA20848158009836DF /* Extensions.swift */,
+				0EDB88B4208483F2009836DF /* JSONCodingKey.swift */,
+				0EDB88B620848417009836DF /* JSONAny.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -435,14 +453,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EDB88AF20848309009836DF /* ProductElement.swift in Sources */,
+				0EDB88B5208483F2009836DF /* JSONCodingKey.swift in Sources */,
+				0EDB88B720848417009836DF /* JSONAny.swift in Sources */,
 				0EDB88A8208480B3009836DF /* Session.swift in Sources */,
 				0EDB88A420848067009836DF /* UserInformation.swift in Sources */,
 				0EDB88A220847E61009836DF /* LabelSectionController.swift in Sources */,
 				0EDB88AB20848158009836DF /* Extensions.swift in Sources */,
 				0EDB88A6208480A2009836DF /* User.swift in Sources */,
+				0EDB88B3208483CE009836DF /* JSONNull.swift in Sources */,
 				0EDB889F20847CF6009836DF /* ProductsViewController.swift in Sources */,
 				0E33B42520847645004CD13A /* LoginViewController.swift in Sources */,
 				0E33B42320847645004CD13A /* AppDelegate.swift in Sources */,
+				0EDB88B120848324009836DF /* ProductProduct.swift in Sources */,
+				0EDB88AD208482C7009836DF /* InvestorProducts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

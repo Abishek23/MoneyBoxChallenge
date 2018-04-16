@@ -11,10 +11,10 @@ import UIKit
 import IGListKit
 import Alamofire
 class ProductsViewController: UIViewController, ListAdapterDataSource {
-    var products = [Product]()
+    var products = [ProductElement]()
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        self.products
+        return self.products
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
