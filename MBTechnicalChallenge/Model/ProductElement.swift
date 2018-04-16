@@ -16,7 +16,7 @@ struct ProductElement: Codable {
     let residualCash, totalFees, totalReturnValueGross, pendingWithdrawal: Int
     let isPendingRebalance: Bool
     let pendingDeposit: Int
-    let product: ProductProduct
+    let product: ProductDetails
     let dateModified: String
     let valuations: [JSONAny]
     let isSelected, isFavourite: Bool

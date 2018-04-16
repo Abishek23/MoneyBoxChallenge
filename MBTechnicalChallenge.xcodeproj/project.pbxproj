@@ -21,7 +21,7 @@
 		0EDB88AB20848158009836DF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88AA20848158009836DF /* Extensions.swift */; };
 		0EDB88AD208482C7009836DF /* InvestorProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88AC208482C7009836DF /* InvestorProducts.swift */; };
 		0EDB88AF20848309009836DF /* ProductElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88AE20848309009836DF /* ProductElement.swift */; };
-		0EDB88B120848324009836DF /* ProductProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B020848324009836DF /* ProductProduct.swift */; };
+		0EDB88B120848324009836DF /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B020848324009836DF /* ProductDetails.swift */; };
 		0EDB88B3208483CE009836DF /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B2208483CE009836DF /* JSONNull.swift */; };
 		0EDB88B5208483F2009836DF /* JSONCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B4208483F2009836DF /* JSONCodingKey.swift */; };
 		0EDB88B720848417009836DF /* JSONAny.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B620848417009836DF /* JSONAny.swift */; };
@@ -71,7 +71,7 @@
 		0EDB88AA20848158009836DF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0EDB88AC208482C7009836DF /* InvestorProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorProducts.swift; sourceTree = "<group>"; };
 		0EDB88AE20848309009836DF /* ProductElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductElement.swift; sourceTree = "<group>"; };
-		0EDB88B020848324009836DF /* ProductProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductProduct.swift; sourceTree = "<group>"; };
+		0EDB88B020848324009836DF /* ProductDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetails.swift; sourceTree = "<group>"; };
 		0EDB88B2208483CE009836DF /* JSONNull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
 		0EDB88B4208483F2009836DF /* JSONCodingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodingKey.swift; sourceTree = "<group>"; };
 		0EDB88B620848417009836DF /* JSONAny.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONAny.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 				0EDB88A7208480B3009836DF /* Session.swift */,
 				0EDB88AC208482C7009836DF /* InvestorProducts.swift */,
 				0EDB88AE20848309009836DF /* ProductElement.swift */,
-				0EDB88B020848324009836DF /* ProductProduct.swift */,
+				0EDB88B020848324009836DF /* ProductDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -458,7 +458,7 @@
 				0EDB889F20847CF6009836DF /* ProductsViewController.swift in Sources */,
 				0E33B42520847645004CD13A /* LoginViewController.swift in Sources */,
 				0E33B42320847645004CD13A /* AppDelegate.swift in Sources */,
-				0EDB88B120848324009836DF /* ProductProduct.swift in Sources */,
+				0EDB88B120848324009836DF /* ProductDetails.swift in Sources */,
 				0EDB88AD208482C7009836DF /* InvestorProducts.swift in Sources */,
 				0EDB88BE20848A36009836DF /* InvestorProductCell.swift in Sources */,
 			);
@@ -637,7 +637,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FA6GRKR3YD;
 				INFOPLIST_FILE = MBTechnicalChallenge/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abishek.MBTechnicalChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -653,7 +656,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FA6GRKR3YD;
 				INFOPLIST_FILE = MBTechnicalChallenge/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abishek.MBTechnicalChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -670,7 +676,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y7NDW2JGRY;
 				INFOPLIST_FILE = MBTechnicalChallengeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abishek.MBTechnicalChallengeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -688,7 +698,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y7NDW2JGRY;
 				INFOPLIST_FILE = MBTechnicalChallengeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abishek.MBTechnicalChallengeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -705,7 +719,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y7NDW2JGRY;
 				INFOPLIST_FILE = MBTechnicalChallengeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abishek.MBTechnicalChallengeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -722,7 +740,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y7NDW2JGRY;
 				INFOPLIST_FILE = MBTechnicalChallengeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.abishek.MBTechnicalChallengeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
