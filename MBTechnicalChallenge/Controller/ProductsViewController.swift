@@ -8,25 +8,19 @@
 
 import Foundation
 import UIKit
-import IGListKit
 import Alamofire
-class ProductsViewController: UIViewController, ListAdapterDataSource {
+class ProductsViewController: UITableViewController {
+   
     var products = [ProductElement]()
     
-    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return self.products
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        
     }
     
-    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        return LabelSectionController()
-    }
-    
-    func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return nil
-    }
-    
-    lazy var adapter = {
-        return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
-    }()
+    cell
     
 }
+

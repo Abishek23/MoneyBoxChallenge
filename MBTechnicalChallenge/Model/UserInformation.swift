@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Alamofire
 
 struct UserInformation: Codable {
     let user: User

@@ -84,7 +84,7 @@
                         <outlet property="inputContainer" destination="q1o-4O-JlL" id="FVD-Kf-i3W"/>
                         <outlet property="passwordLabel" destination="3SK-rr-cuN" id="szB-t4-Zkr"/>
                         <outlet property="passwordTextField" destination="6Lw-pl-RJk" id="RNn-62-EAQ"/>
-                        <segue destination="oyr-zF-ODX" kind="show" identifier="loginSegue" id="ksM-7g-j5f"/>
+                        <segue destination="5Cx-R5-Ixr" kind="show" id="ieg-W4-Ri8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -92,38 +92,41 @@
             <point key="canvasLocation" x="812" y="792.95352323838085"/>
         </scene>
         <!--Products View Controller-->
-        <scene sceneID="nQJ-W7-67W">
+        <scene sceneID="3WF-3E-Pkr">
             <objects>
-                <viewController id="oyr-zF-ODX" customClass="ProductsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fKD-ll-jJh">
+                <tableViewController id="5Cx-R5-Ixr" customClass="ProductsViewController" customModule="MBTechnicalChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="97E-OC-wmn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vOS-U0-fXu">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OSf-tT-UH1">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="F4D-oo-yTN" firstAttribute="trailing" secondItem="vOS-U0-fXu" secondAttribute="trailing" id="3mn-DC-FCL"/>
-                            <constraint firstItem="vOS-U0-fXu" firstAttribute="top" secondItem="F4D-oo-yTN" secondAttribute="top" id="8QH-5b-6di"/>
-                            <constraint firstItem="vOS-U0-fXu" firstAttribute="leading" secondItem="F4D-oo-yTN" secondAttribute="leading" id="PSC-Cy-IEg"/>
-                            <constraint firstItem="F4D-oo-yTN" firstAttribute="bottom" secondItem="vOS-U0-fXu" secondAttribute="bottom" id="XoK-SJ-kOR"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="F4D-oo-yTN"/>
+                        <connections>
+                            <outlet property="dataSource" destination="5Cx-R5-Ixr" id="1uG-nJ-QOy"/>
+                            <outlet property="delegate" destination="5Cx-R5-Ixr" id="y73-je-Ove"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="97E-OC-wmn" id="9bG-Wk-up8"/>
+                        <segue destination="kdC-GM-Kqe" kind="show" identifier="showProductSegue" id="gDt-iH-OId"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6go-z9-I9P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1521" y="793"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DgP-pY-FUI">
+            <objects>
+                <viewController id="kdC-GM-Kqe" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T6i-nw-QSG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="svh-Lh-8Fi"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tze-yM-tl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E3d-e7-gF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1527" y="793"/>
+            <point key="canvasLocation" x="2230" y="793"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QDn-V6-kpx">
