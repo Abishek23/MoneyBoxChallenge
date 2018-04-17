@@ -48,6 +48,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4g-V9-MqO">
                                         <rect key="frame" x="8" y="160" width="259" height="30"/>
                                         <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGo-ra-kDO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -68,12 +71,33 @@
                                     <constraint firstItem="6Lw-pl-RJk" firstAttribute="top" secondItem="3SK-rr-cuN" secondAttribute="bottom" constant="8" id="yT3-Yn-WvJ"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVU-ff-A7e">
+                                <rect key="frame" x="156" y="412" width="62" height="30"/>
+                                <state key="normal" title="Products"/>
+                                <connections>
+                                    <action selector="getProducts:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9ml-PB-Rxe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXT-WC-6Cl">
+                                <rect key="frame" x="172" y="474" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="getProducts:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JTd-Vq-l53"/>
+                                    <action selector="moneyBoxAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P6O-jI-UFt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rXT-WC-6Cl" secondAttribute="trailing" constant="173" id="FBM-ul-0eU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HVU-ff-A7e" secondAttribute="trailing" constant="157" id="Kzg-g6-zxo"/>
+                            <constraint firstItem="HVU-ff-A7e" firstAttribute="top" secondItem="q1o-4O-JlL" secondAttribute="bottom" constant="28" id="YC7-Za-sIB"/>
+                            <constraint firstItem="rXT-WC-6Cl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="172" id="bH5-Sw-4jy"/>
                             <constraint firstItem="q1o-4O-JlL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="130" id="btm-Vq-i6o"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q1o-4O-JlL" secondAttribute="trailing" constant="50" id="cfU-uh-qM4"/>
                             <constraint firstItem="q1o-4O-JlL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="eVH-VO-eqm"/>
+                            <constraint firstItem="rXT-WC-6Cl" firstAttribute="top" secondItem="HVU-ff-A7e" secondAttribute="bottom" constant="32" id="eqL-Br-YXp"/>
+                            <constraint firstItem="HVU-ff-A7e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="156" id="lDl-xD-DHd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -82,6 +106,7 @@
                         <outlet property="emailLabel" destination="aF5-x7-dP6" id="6sa-fV-nhY"/>
                         <outlet property="emailTextField" destination="CJV-wh-fSF" id="qUb-s1-5Nb"/>
                         <outlet property="inputContainer" destination="q1o-4O-JlL" id="FVD-Kf-i3W"/>
+                        <outlet property="loginOutlet" destination="Q4g-V9-MqO" id="iO6-l9-zxM"/>
                         <outlet property="passwordLabel" destination="3SK-rr-cuN" id="szB-t4-Zkr"/>
                         <outlet property="passwordTextField" destination="6Lw-pl-RJk" id="RNn-62-EAQ"/>
                         <segue destination="5Cx-R5-Ixr" kind="show" id="ieg-W4-Ri8"/>
