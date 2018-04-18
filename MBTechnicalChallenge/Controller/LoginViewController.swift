@@ -7,190 +7,109 @@
 //
 
 import UIKit
-import Alamofire
+import SVProgressHUD
 import AdSupport
-class ViewController: UIViewController {
-  var userInformation:UserInformation? = nil
+import Whisper
+class LoginViewController: UIViewController {
+ 
+  
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var inputContainer: UIView!
     @IBOutlet weak var loginOutlet: UIButton!
+    
+
+    func enableInputs(){
+        self.passwordTextField.isUserInteractionEnabled = true
+        self.emailTextField.isUserInteractionEnabled = true
+        self.loginOutlet.isUserInteractionEnabled = true
+    }
+    func disableInputs(){
+        self.passwordTextField.isUserInteractionEnabled = false
+        self.emailTextField.isUserInteractionEnabled = false
+        self.loginOutlet.isUserInteractionEnabled = false
+    }
     @IBAction func login(_ sender: UIButton) {
       
-//        guard let email = emailTextField.text, let password = passwordTextField.text else {
-//            return
-//
-//        }
-//
-        loginRequest()
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            return
+
+        }
         
-//        MBClient.sharedInstance().login(email: "test+env12@moneyboxapp.com", password: "Money$$box@107") { (userInfo ) in
-//
-//            if userInfo != nil {
-//                MBClient.sharedInstance().userInformation = userInfo
+
+        MBClient.sharedInstance().loginRequest(email: email , password: password) { (userInfo,error)  -> (Void) in
+      
+            DispatchQueue.main.async {
+                SVProgressHUD.show()
+                self.disableInputs()
+                
+            }
+            
+            if error != nil {
+                DispatchQueue.main.async {
+                    let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
+                    SVProgressHUD.dismiss()
+                    // Show and hide a message after delay
+                    Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                   self.enableInputs()
+                }
+            }
+            if let userInfo = userInfo {
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                             self.performSegue(withIdentifier: "productsSegue", sender: sender)
+                  self.enableInputs()
+                }
+       
+                print(userInfo)
+            } else {
+                print("error occured")
+                
+                DispatchQueue.main.async {
+                    let message = Message(title: "Login failed please try again", backgroundColor: .red)
+                    SVProgressHUD.dismiss()
+                    // Show and hide a message after delay
+                    Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                    self.enableInputs()
+                }
+                
+            }
+            
+        }
+
+    }
+    
+//    @IBAction func getProducts(_ sender: Any) {
+//        MBClient.sharedInstance().investorProductsRequest { (investorProducts) -> (Void) in
+//            if let investorProd = investorProducts {
+//                print(investorProd)
 //            } else {
-//                print ("Log in failed try again")
+//                print("error")
 //            }
-//
 //        }
-    }
+//    }
+//
+//
     
-    @IBAction func getProducts(_ sender: Any) {
-        investorProductsRequest()
-    }
-    func loginRequest() {
-      //  let url = NSURL(string: MBConstants.TestServer+"/users/login")
-        guard  let serviceUrl = URL(string: "https://api-test00.moneyboxapp.com/users/login") else {return}
-        let parameterDictionary = ["Email":"test+env12@moneyboxapp.com", "Password": "Money$$box@107", "Idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString]
-        var request = URLRequest(url: serviceUrl)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue(AppID.ID.rawValue, forHTTPHeaderField: HTTPHeaderField.appID.rawValue)
-        request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
-        request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
-        request.setValue(ApiVersion.three.rawValue, forHTTPHeaderField: HTTPHeaderField.apiVersion.rawValue)
-        request.setValue(AppVersion.four.rawValue, forHTTPHeaderField: HTTPHeaderField.appVersion.rawValue)
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameterDictionary, options: []) else {return }
-        request.httpBody = httpBody
-        
-        let session = URLSession.shared
-        session.dataTask(with: request) { (data, response, error) in
-            
-            if let response = response {
-                print(response)
-            }
-            if let data = data {
-                do {
-                    self.userInformation = try JSONDecoder().decode(UserInformation.self, from: data)
-                    print("UserInformationObject:\(self.userInformation)")
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-        }.resume()
-        
-    }
-    func investorProductsRequest() {
-        //  let url = NSURL(string: MBConstants.TestServer+"/users/login")
-        
-        
-        guard let token = userInformation?.session.bearerToken else {return}
-        let authToken = "Bearer \(token)"
-        guard  let serviceUrl = URL(string: "https://api-test00.moneyboxapp.com/investorproduct/thisweek") else {return}
-        let parameterDictionary = ["Email":"test+env12@moneyboxapp.com", "Password": "Money$$box@107", "Idfa": ASIdentifierManager.shared().advertisingIdentifier.uuidString]
-        var request = URLRequest(url: serviceUrl)
-        request.httpMethod = HTTPMethod.get.rawValue
-        request.setValue(AppID.ID.rawValue, forHTTPHeaderField: HTTPHeaderField.appID.rawValue)
-        request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
-        request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
-        request.setValue(ApiVersion.three.rawValue, forHTTPHeaderField: HTTPHeaderField.apiVersion.rawValue)
-        request.setValue(AppVersion.four.rawValue, forHTTPHeaderField: HTTPHeaderField.appVersion.rawValue)
-        request.setValue(authToken, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameterDictionary, options: []) else {return }
-        request.httpBody = httpBody
-        
-        let session = URLSession.shared
-        session.dataTask(with: request) { (data, response, error) in
-            
-            if let response = response {
-                print(response)
-            }
-            if let data = data {
-                do {
-                    let investorProducts = try JSONDecoder().decode(InvestorProducts.self, from: data)
-                    print("InvestorProducts:\(investorProducts)")
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-            }.resume()
-        
-    }
-    
-    //isa ID = 3289 gia = 3292
-    func oneOffPaymentRequest(amount : Int) {
-        //  let url = NSURL(string: MBConstants.TestServer+"/users/login")
-        guard  let serviceUrl = URL(string: "https://api-test00.moneyboxapp.com/oneoffpayments") else {return}
-        
-        guard let token = userInformation?.session.bearerToken else {return}
-        let authToken = "Bearer \(token)"
-        let parameterDictionary = ["Amount":amount, "InvestorProductId": 3289]
-        var request = URLRequest(url: serviceUrl)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue(AppID.ID.rawValue, forHTTPHeaderField: HTTPHeaderField.appID.rawValue)
-        request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
-        request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
-        request.setValue(ApiVersion.three.rawValue, forHTTPHeaderField: HTTPHeaderField.apiVersion.rawValue)
-        request.setValue(AppVersion.four.rawValue, forHTTPHeaderField: HTTPHeaderField.appVersion.rawValue)
-        request.setValue(authToken, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameterDictionary, options: []) else {return }
-        request.httpBody = httpBody
-        
-        let session = URLSession.shared
-        session.dataTask(with: request) { (data, response, error) in
-            
-            if let response = response {
-                print(response)
-            }
-            if let data = data {
-                do {
-                    let mb = try JSONDecoder().decode(Moneybox.self, from: data)
-                    print("Moneybox :\(mb)")
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-            }.resume()
-        
-    }
+
     
     
-    
-    func logout() {
-        //  let url = NSURL(string: MBConstants.TestServer+"/users/login")
-        guard  let serviceUrl = URL(string: "https://api-test00.moneyboxapp.com/users/logout") else {return}
-        
-        guard let token = userInformation?.session.bearerToken else {return}
-        let authToken = "Bearer \(token)"
-        
-        var request = URLRequest(url: serviceUrl)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue(AppID.ID.rawValue, forHTTPHeaderField: HTTPHeaderField.appID.rawValue)
-        request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
-        request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
-        request.setValue(ApiVersion.three.rawValue, forHTTPHeaderField: HTTPHeaderField.apiVersion.rawValue)
-        request.setValue(AppVersion.four.rawValue, forHTTPHeaderField: HTTPHeaderField.appVersion.rawValue)
-        request.setValue(authToken, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: [], options: []) else {return }
-        request.httpBody = httpBody
-        
-        let session = URLSession.shared
-        session.dataTask(with: request) { (data, response, error) in
-            
-            if let response = response {
-                print(response)
-            }
-            if let data = data {
-                do {
-                    let mb = try JSONDecoder().decode(Moneybox.self, from: data)
-                    print("Moneybox :\(mb)")
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-            }.resume()
-        
-    }
-    
-    
-    
-    @IBAction func moneyBoxAction(_ sender: UIButton) {
-        oneOffPaymentRequest(amount: 10)
-    }
+//    @IBAction func moneyBoxAction(_ sender: UIButton) {
+//        //oneOffPaymentRequest(amount: 10, inverstorProductId: 3289)
+//        MBClient.sharedInstance().oneOffPaymentRequest(amount: 10, inverstorProductId: 3289) { (moneyBox) -> (Void) in
+//            if let mb = moneyBox {
+//                print(mb)
+//            } else {
+//                print("error")
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
   
         // Do any additional setup after loading the view, typically from a nib.
     }

@@ -13,7 +13,7 @@
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MBTechnicalChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="MBTechnicalChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
                                         <rect key="frame" x="8" y="160" width="259" height="30"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
-                                            <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGo-ra-kDO"/>
+                                            <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EZI-eN-0j1"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -59,7 +59,9 @@
                                     <constraint firstItem="6Lw-pl-RJk" firstAttribute="leading" secondItem="q1o-4O-JlL" secondAttribute="leading" constant="8" id="5SJ-eb-zXI"/>
                                     <constraint firstItem="CJV-wh-fSF" firstAttribute="top" secondItem="aF5-x7-dP6" secondAttribute="bottom" constant="8" id="8Z1-qj-1op"/>
                                     <constraint firstItem="CJV-wh-fSF" firstAttribute="leading" secondItem="q1o-4O-JlL" secondAttribute="leading" constant="8" id="8ch-xw-SmU"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aF5-x7-dP6" secondAttribute="trailing" constant="20" symbolic="YES" id="JWI-El-fwk"/>
                                     <constraint firstItem="3SK-rr-cuN" firstAttribute="leading" secondItem="q1o-4O-JlL" secondAttribute="leading" constant="8" id="MSU-b3-H2q"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3SK-rr-cuN" secondAttribute="trailing" constant="20" symbolic="YES" id="QvI-HU-6YK"/>
                                     <constraint firstItem="aF5-x7-dP6" firstAttribute="top" secondItem="q1o-4O-JlL" secondAttribute="top" constant="8" id="QwC-az-Nej"/>
                                     <constraint firstItem="Q4g-V9-MqO" firstAttribute="top" secondItem="6Lw-pl-RJk" secondAttribute="bottom" constant="26" id="TYa-Rh-i1v"/>
                                     <constraint firstItem="3SK-rr-cuN" firstAttribute="top" secondItem="CJV-wh-fSF" secondAttribute="bottom" constant="8" id="YRJ-y9-QRW"/>
@@ -71,52 +73,31 @@
                                     <constraint firstItem="6Lw-pl-RJk" firstAttribute="top" secondItem="3SK-rr-cuN" secondAttribute="bottom" constant="8" id="yT3-Yn-WvJ"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVU-ff-A7e">
-                                <rect key="frame" x="156" y="412" width="62" height="30"/>
-                                <state key="normal" title="Products"/>
-                                <connections>
-                                    <action selector="getProducts:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9ml-PB-Rxe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXT-WC-6Cl">
-                                <rect key="frame" x="172" y="474" width="30" height="30"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <action selector="getProducts:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JTd-Vq-l53"/>
-                                    <action selector="moneyBoxAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P6O-jI-UFt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rXT-WC-6Cl" secondAttribute="trailing" constant="173" id="FBM-ul-0eU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HVU-ff-A7e" secondAttribute="trailing" constant="157" id="Kzg-g6-zxo"/>
-                            <constraint firstItem="HVU-ff-A7e" firstAttribute="top" secondItem="q1o-4O-JlL" secondAttribute="bottom" constant="28" id="YC7-Za-sIB"/>
-                            <constraint firstItem="rXT-WC-6Cl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="172" id="bH5-Sw-4jy"/>
                             <constraint firstItem="q1o-4O-JlL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="130" id="btm-Vq-i6o"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q1o-4O-JlL" secondAttribute="trailing" constant="50" id="cfU-uh-qM4"/>
                             <constraint firstItem="q1o-4O-JlL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="eVH-VO-eqm"/>
-                            <constraint firstItem="rXT-WC-6Cl" firstAttribute="top" secondItem="HVU-ff-A7e" secondAttribute="bottom" constant="32" id="eqL-Br-YXp"/>
-                            <constraint firstItem="HVU-ff-A7e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="156" id="lDl-xD-DHd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="QqK-c0-99L"/>
                     <connections>
-                        <outlet property="emailLabel" destination="aF5-x7-dP6" id="6sa-fV-nhY"/>
-                        <outlet property="emailTextField" destination="CJV-wh-fSF" id="qUb-s1-5Nb"/>
-                        <outlet property="inputContainer" destination="q1o-4O-JlL" id="FVD-Kf-i3W"/>
-                        <outlet property="loginOutlet" destination="Q4g-V9-MqO" id="iO6-l9-zxM"/>
-                        <outlet property="passwordLabel" destination="3SK-rr-cuN" id="szB-t4-Zkr"/>
-                        <outlet property="passwordTextField" destination="6Lw-pl-RJk" id="RNn-62-EAQ"/>
-                        <segue destination="5Cx-R5-Ixr" kind="show" id="ieg-W4-Ri8"/>
+                        <outlet property="emailLabel" destination="aF5-x7-dP6" id="MT4-vc-4RD"/>
+                        <outlet property="emailTextField" destination="CJV-wh-fSF" id="ZRI-nz-n31"/>
+                        <outlet property="inputContainer" destination="q1o-4O-JlL" id="u7O-WX-Iuo"/>
+                        <outlet property="loginOutlet" destination="Q4g-V9-MqO" id="5cN-9x-2Bs"/>
+                        <outlet property="passwordLabel" destination="3SK-rr-cuN" id="K0M-dt-pd6"/>
+                        <outlet property="passwordTextField" destination="6Lw-pl-RJk" id="Rtz-iB-j3J"/>
+                        <segue destination="5Cx-R5-Ixr" kind="show" identifier="productsSegue" id="ieg-W4-Ri8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="812" y="792.95352323838085"/>
         </scene>
-        <!--Products View Controller-->
+        <!--Your Accounts-->
         <scene sceneID="3WF-3E-Pkr">
             <objects>
                 <tableViewController id="5Cx-R5-Ixr" customClass="ProductsViewController" customModule="MBTechnicalChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -124,30 +105,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InvestorProductCell" rowHeight="110" id="VGX-gJ-geO" customClass="InvestorProductCell" customModule="MBTechnicalChallenge" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="110"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VGX-gJ-geO" id="qNE-Gk-y5L">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKN-6u-Dbu">
+                                            <rect key="frame" x="166" y="44" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="qKN-6u-Dbu" firstAttribute="centerX" secondItem="qNE-Gk-y5L" secondAttribute="centerX" id="9Kv-Zo-QHE"/>
+                                        <constraint firstItem="qKN-6u-Dbu" firstAttribute="centerY" secondItem="qNE-Gk-y5L" secondAttribute="centerY" id="yKe-Zn-Hsu"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="qKN-6u-Dbu" id="fv2-dE-1mn"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="5Cx-R5-Ixr" id="1uG-nJ-QOy"/>
                             <outlet property="delegate" destination="5Cx-R5-Ixr" id="y73-je-Ove"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Your Accounts" id="N4p-zb-SPS">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="MvA-A9-0Ww">
+                            <connections>
+                                <action selector="logoutAction:" destination="5Cx-R5-Ixr" id="MRQ-EV-VOY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="logoutOutlet" destination="MvA-A9-0Ww" id="hnP-L7-Pe4"/>
+                        <outlet property="navItem" destination="N4p-zb-SPS" id="Lfz-yj-roy"/>
                         <outlet property="tableView" destination="97E-OC-wmn" id="9bG-Wk-up8"/>
-                        <segue destination="kdC-GM-Kqe" kind="show" identifier="showProductSegue" id="gDt-iH-OId"/>
+                        <segue destination="kdC-GM-Kqe" kind="show" identifier="ProductSegue" id="gDt-iH-OId"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6go-z9-I9P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1521" y="793"/>
+            <point key="canvasLocation" x="1520.8" y="792.95352323838085"/>
         </scene>
-        <!--View Controller-->
+        <!--ISA-->
         <scene sceneID="DgP-pY-FUI">
             <objects>
-                <viewController id="kdC-GM-Kqe" sceneMemberID="viewController">
+                <viewController id="kdC-GM-Kqe" customClass="ProductViewController" customModule="MBTechnicalChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T6i-nw-QSG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your MoneyBox: £130" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="NwF-Ng-foH">
+                                <rect key="frame" x="8" y="160" width="367" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emD-cB-5om">
+                                <rect key="frame" x="100" y="208" width="174" height="30"/>
+                                <state key="normal" title="Add £10 to my moneybox"/>
+                                <connections>
+                                    <action selector="incementMoneyBox:" destination="kdC-GM-Kqe" eventType="touchUpInside" id="rkN-rt-WNa"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="emD-cB-5om" firstAttribute="centerX" secondItem="T6i-nw-QSG" secondAttribute="centerX" id="QtS-XV-STX"/>
+                            <constraint firstItem="NwF-Ng-foH" firstAttribute="leading" secondItem="svh-Lh-8Fi" secondAttribute="leading" constant="8" id="SsP-YR-nQB"/>
+                            <constraint firstItem="emD-cB-5om" firstAttribute="top" secondItem="NwF-Ng-foH" secondAttribute="bottom" constant="24" id="ToA-wq-9Fk"/>
+                            <constraint firstItem="NwF-Ng-foH" firstAttribute="top" secondItem="svh-Lh-8Fi" secondAttribute="top" constant="96" id="YwS-tJ-1dw"/>
+                            <constraint firstItem="svh-Lh-8Fi" firstAttribute="trailing" secondItem="NwF-Ng-foH" secondAttribute="trailing" id="fJi-0c-5Mf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="svh-Lh-8Fi"/>
                     </view>
+                    <navigationItem key="navigationItem" title="ISA" id="Lj7-4h-GMM"/>
+                    <connections>
+                        <outlet property="incrementMBOutlet" destination="emD-cB-5om" id="Fi5-KD-M3t"/>
+                        <outlet property="moneyboxLabel" destination="NwF-Ng-foH" id="A7o-OS-dUU"/>
+                        <outlet property="navItem" destination="Lj7-4h-GMM" id="yjX-Kk-6Eg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E3d-e7-gF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -169,7 +212,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3GO-A0-iiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128.80000000000001" y="792.95352323838085"/>
+            <point key="canvasLocation" x="-330" y="793"/>
         </scene>
     </scenes>
 </document>

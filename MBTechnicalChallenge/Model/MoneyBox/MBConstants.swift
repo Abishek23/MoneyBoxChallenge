@@ -12,9 +12,18 @@ struct MBConstants {
     
 
     struct TestServer {
-        static let baseURL = "https://api-test00.moneyboxapp.com"
+        static let baseURL = URL(string:  "https://api-test00.moneyboxapp.com")
+       
     }
 
+    
+    struct APIEndpoints {
+    static let login = TestServer.baseURL?.appendingPathComponent("/users/login")
+    static let logout = TestServer.baseURL?.appendingPathComponent("/users/logout")
+    static let thisweek = TestServer.baseURL?.appendingPathComponent("/investorproduct/thisweek")
+    static let oneoffpayment = TestServer.baseURL?.appendingPathComponent("/oneoffpayments")
+    }
+    
     struct APIParameterKey {
         static let password = "Password"
         static let email = "Email"
@@ -22,16 +31,19 @@ struct MBConstants {
         static let amount = "Amount"
         static let inverstorProductID = "InvestorProductId"
         
+        
     }
     
     struct APIParamterValue {
         static let password = "Money$$box@107"
         static let email = "test+env12@moneyboxapp.com"
         static let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        static let fixedDeposit = 10
+        
         
     }
 }
-    
+
 enum HTTPHeaderField:String {
     case appID = "AppId"
     case authentication = "Authorization"
@@ -40,6 +52,11 @@ enum HTTPHeaderField:String {
     case acceptEnconding = "Accept-Encoding"
     case appVersion = "appVersion"
     case apiVersion = "apiVersion"
+}
+
+enum HTTPMethod:String{
+    case post = "POST"
+    case get = "GET"
 }
 
 enum ContentType:String {

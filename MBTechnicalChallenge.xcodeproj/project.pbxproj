@@ -14,6 +14,7 @@
 		0E33B42D20847646004CD13A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E33B42B20847646004CD13A /* LaunchScreen.storyboard */; };
 		0E33B43820847646004CD13A /* MBTechnicalChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E33B43720847646004CD13A /* MBTechnicalChallengeTests.swift */; };
 		0E33B44320847646004CD13A /* MBTechnicalChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E33B44220847646004CD13A /* MBTechnicalChallengeUITests.swift */; };
+		0EB4A9872086EA1700E62F45 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB4A9862086EA1700E62F45 /* ProductViewController.swift */; };
 		0EDB889F20847CF6009836DF /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB889E20847CF6009836DF /* ProductsViewController.swift */; };
 		0EDB88A420848067009836DF /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88A320848067009836DF /* UserInformation.swift */; };
 		0EDB88A6208480A2009836DF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88A5208480A2009836DF /* User.swift */; };
@@ -26,11 +27,8 @@
 		0EDB88B5208483F2009836DF /* JSONCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B4208483F2009836DF /* JSONCodingKey.swift */; };
 		0EDB88B720848417009836DF /* JSONAny.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88B620848417009836DF /* JSONAny.swift */; };
 		0EDB88BE20848A36009836DF /* InvestorProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88BC20848A36009836DF /* InvestorProductCell.swift */; };
-		0EDB88BF20848A36009836DF /* InvestorProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EDB88BD20848A36009836DF /* InvestorProductCell.xib */; };
 		0EDB88C4208490BF009836DF /* MBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88C3208490BF009836DF /* MBClient.swift */; };
 		0EDB88C6208490D4009836DF /* MBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88C5208490D4009836DF /* MBConstants.swift */; };
-		0EDB88C8208490E2009836DF /* MBRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88C7208490E2009836DF /* MBRouter.swift */; };
-		0EDB88CA2084C585009836DF /* MBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88C92084C585009836DF /* MBConfiguration.swift */; };
 		0EDB88D02084E803009836DF /* Moneybox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB88CF2084E803009836DF /* Moneybox.swift */; };
 		753F3D52AA222B1F3E012AE9 /* Pods_MBTechnicalChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB553454701E449F140C971C /* Pods_MBTechnicalChallengeUITests.framework */; };
 		9DF64016DF544C16C34CA5D1 /* Pods_MBTechnicalChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F584796FB206BC028416628 /* Pods_MBTechnicalChallenge.framework */; };
@@ -69,6 +67,7 @@
 		0E33B43E20847646004CD13A /* MBTechnicalChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBTechnicalChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E33B44220847646004CD13A /* MBTechnicalChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTechnicalChallengeUITests.swift; sourceTree = "<group>"; };
 		0E33B44420847646004CD13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EB4A9862086EA1700E62F45 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		0EDB889E20847CF6009836DF /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		0EDB88A320848067009836DF /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		0EDB88A5208480A2009836DF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -81,11 +80,8 @@
 		0EDB88B4208483F2009836DF /* JSONCodingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodingKey.swift; sourceTree = "<group>"; };
 		0EDB88B620848417009836DF /* JSONAny.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONAny.swift; sourceTree = "<group>"; };
 		0EDB88BC20848A36009836DF /* InvestorProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorProductCell.swift; sourceTree = "<group>"; };
-		0EDB88BD20848A36009836DF /* InvestorProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorProductCell.xib; sourceTree = "<group>"; };
 		0EDB88C3208490BF009836DF /* MBClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBClient.swift; sourceTree = "<group>"; };
 		0EDB88C5208490D4009836DF /* MBConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBConstants.swift; sourceTree = "<group>"; };
-		0EDB88C7208490E2009836DF /* MBRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBRouter.swift; sourceTree = "<group>"; };
-		0EDB88C92084C585009836DF /* MBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBConfiguration.swift; sourceTree = "<group>"; };
 		0EDB88CF2084E803009836DF /* Moneybox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moneybox.swift; sourceTree = "<group>"; };
 		33EEDE2570420F4AC7B1D84D /* Pods-MBTechnicalChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBTechnicalChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBTechnicalChallengeTests/Pods-MBTechnicalChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		4F584796FB206BC028416628 /* Pods_MBTechnicalChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBTechnicalChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +181,7 @@
 			children = (
 				0E33B42420847645004CD13A /* LoginViewController.swift */,
 				0EDB889E20847CF6009836DF /* ProductsViewController.swift */,
+				0EB4A9862086EA1700E62F45 /* ProductViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -194,7 +191,6 @@
 			children = (
 				0E33B42620847645004CD13A /* Main.storyboard */,
 				0EDB88BC20848A36009836DF /* InvestorProductCell.swift */,
-				0EDB88BD20848A36009836DF /* InvestorProductCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,8 +234,6 @@
 			children = (
 				0EDB88C3208490BF009836DF /* MBClient.swift */,
 				0EDB88C5208490D4009836DF /* MBConstants.swift */,
-				0EDB88C92084C585009836DF /* MBConfiguration.swift */,
-				0EDB88C7208490E2009836DF /* MBRouter.swift */,
 			);
 			path = MoneyBox;
 			sourceTree = "<group>";
@@ -378,7 +372,6 @@
 				0E33B42D20847646004CD13A /* LaunchScreen.storyboard in Resources */,
 				0E33B42A20847646004CD13A /* Assets.xcassets in Resources */,
 				0E33B42820847645004CD13A /* Main.storyboard in Resources */,
-				0EDB88BF20848A36009836DF /* InvestorProductCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,11 +453,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MBTechnicalChallenge/Pods-MBTechnicalChallenge-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Whisper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -481,7 +476,6 @@
 				0EDB88AF20848309009836DF /* ProductElement.swift in Sources */,
 				0EDB88B5208483F2009836DF /* JSONCodingKey.swift in Sources */,
 				0EDB88B720848417009836DF /* JSONAny.swift in Sources */,
-				0EDB88CA2084C585009836DF /* MBConfiguration.swift in Sources */,
 				0EDB88D02084E803009836DF /* Moneybox.swift in Sources */,
 				0EDB88A8208480B3009836DF /* Session.swift in Sources */,
 				0EDB88A420848067009836DF /* UserInformation.swift in Sources */,
@@ -491,8 +485,8 @@
 				0EDB88C6208490D4009836DF /* MBConstants.swift in Sources */,
 				0EDB889F20847CF6009836DF /* ProductsViewController.swift in Sources */,
 				0E33B42520847645004CD13A /* LoginViewController.swift in Sources */,
+				0EB4A9872086EA1700E62F45 /* ProductViewController.swift in Sources */,
 				0E33B42320847645004CD13A /* AppDelegate.swift in Sources */,
-				0EDB88C8208490E2009836DF /* MBRouter.swift in Sources */,
 				0EDB88B120848324009836DF /* ProductDetails.swift in Sources */,
 				0EDB88AD208482C7009836DF /* InvestorProducts.swift in Sources */,
 				0EDB88BE20848A36009836DF /* InvestorProductCell.swift in Sources */,
@@ -673,6 +667,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FA6GRKR3YD;
 				INFOPLIST_FILE = MBTechnicalChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -692,6 +687,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FA6GRKR3YD;
 				INFOPLIST_FILE = MBTechnicalChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
