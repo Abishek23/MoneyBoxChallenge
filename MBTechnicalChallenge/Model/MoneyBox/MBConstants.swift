@@ -18,10 +18,10 @@ struct MBConstants {
 
     
     struct APIEndpoints {
-    static let login = TestServer.baseURL?.appendingPathComponent("/users/login")
-    static let logout = TestServer.baseURL?.appendingPathComponent("/users/logout")
-    static let thisweek = TestServer.baseURL?.appendingPathComponent("/investorproduct/thisweek")
-    static let oneoffpayment = TestServer.baseURL?.appendingPathComponent("/oneoffpayments")
+    static let login = TestServer.baseURL!.appendingPathComponent("/users/login")
+    static let logout = TestServer.baseURL!.appendingPathComponent("/users/logout")
+    static let thisweek = TestServer.baseURL!.appendingPathComponent("/investorproduct/thisweek")
+    static let oneoffpayment = TestServer.baseURL!.appendingPathComponent("/oneoffpayments")
     }
     
     struct APIParameterKey {

@@ -15,18 +15,17 @@ class ProductsViewController: UITableViewController {
     var selectedAccount: ProductElement?
     @IBOutlet weak var logoutOutlet: UIBarButtonItem!
     @IBOutlet weak var navItem: UINavigationItem!
-    @IBAction func logoutAction(_ sender: Any) {
-    }
-    override func viewDidLoad() {
-        
     
-        self.navItem.hidesBackButton = true
+    @IBAction func logoutAction(_ sender: Any) {
    
+
         
-        MBClient.sharedInstance().investorProductsRequest { (investorProducts, error) -> (Void) in
-            DispatchQueue.main.async {
-                SVProgressHUD.show()
-            }
+        MBClient.sharedInstance().logout { (loggedOut, error) -> (Void) in
+
+           
+//            DispatchQueue.main.async {
+//                SVProgressHUD.show()
+//            }
             
             if error != nil {
                 DispatchQueue.main.sync {
@@ -37,13 +36,72 @@ class ProductsViewController: UITableViewController {
                 }
             }
             
+            
+            if loggedOut {
+           
+                    DispatchQueue.main.sync {
+                                SVProgressHUD.dismiss()
+                         let vc = self.storyboard!.instantiateViewController(withIdentifier: "login") as! LoginViewController
+                        
+                        self.present(vc, animated: true, completion: nil)
+                      
+                        let message = Message(title: "Logged out successfully", backgroundColor: .red)
+                
+                        // Show and hide a message after delay
+                        Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                    }
+                
+                
+            } else {
+       
+                    DispatchQueue.main.sync {
+                        let message = Message(title: "Logout failed", backgroundColor: .red)
+                        SVProgressHUD.dismiss()
+                        // Show and hide a message after delay
+                        Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                    
+                }
+                
+            }
+        }
+    }
+    override func viewDidLoad() {
+        tableView.bounces = false
+//        self.refreshControl = UIRefreshControl()
+//        refreshControl!.addTarget(self, action: #selector(self.fetchInvestorProducts), for: .valueChanged)
+        self.tableView.refreshControl = refreshControl
+        self.navItem.hidesBackButton = true
+   
+        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fetchInvestorProducts()
+    }
+    
+    @objc func fetchInvestorProducts(){
+        MBClient.sharedInstance().investorProductsRequest { (investorProducts, error) -> (Void) in
+      
+            
+            if error != nil {
+                DispatchQueue.main.sync {
+                   
+                    let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
+                    SVProgressHUD.dismiss()
+                    // Show and hide a message after delay
+                    Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                }
+            }
+            
             if let investorProducts = investorProducts {
                 DispatchQueue.main.sync {
                     SVProgressHUD.dismiss()
-               
+                    
                     MBClient.sharedInstance().investorProducts = investorProducts
                     self.tableView.reloadData()
-                    print(MBClient.sharedInstance().investorProducts?.products)
+                    
                 }
                 
                 print(investorProducts)
@@ -56,11 +114,11 @@ class ProductsViewController: UITableViewController {
                     // Show and hide a message after delay
                     Whisper.show(whisper: message, to: self.navigationController!, action: .show)
                 }
+                
+            }
+            
             
         }
-        
-  
-    }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,6 +128,9 @@ class ProductsViewController: UITableViewController {
         guard let products = MBClient.sharedInstance().investorProducts?.products else {return UITableViewCell() }
          let product = products[indexPath.row]
         
+        cell.label.layer.cornerRadius = 4
+        cell.label.clipsToBounds = true
+
         if product.investorProductType == "Isa" {
             cell.label.text = "Stocks and Shares ISA >"
         } else {

@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
 
         }
         
+        if email.count > 0 && password.count > 0 {
 
         MBClient.sharedInstance().loginRequest(email: email , password: password) { (userInfo,error)  -> (Void) in
       
@@ -49,8 +50,9 @@ class LoginViewController: UIViewController {
             
             if error != nil {
                 DispatchQueue.main.async {
+                      SVProgressHUD.dismiss()
                     let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
-                    SVProgressHUD.dismiss()
+                  
                     // Show and hide a message after delay
                     Whisper.show(whisper: message, to: self.navigationController!, action: .show)
                    self.enableInputs()
@@ -68,8 +70,9 @@ class LoginViewController: UIViewController {
                 print("error occured")
                 
                 DispatchQueue.main.async {
+                      SVProgressHUD.dismiss()
                     let message = Message(title: "Login failed please try again", backgroundColor: .red)
-                    SVProgressHUD.dismiss()
+                  
                     // Show and hide a message after delay
                     Whisper.show(whisper: message, to: self.navigationController!, action: .show)
                     self.enableInputs()
@@ -79,34 +82,16 @@ class LoginViewController: UIViewController {
             
         }
 
+        } else {
+            let message = Message(title: "Login details cannot be empty", backgroundColor: .red)
+            
+            // Show and hide a message after delay
+            Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+        }
+        
     }
     
-//    @IBAction func getProducts(_ sender: Any) {
-//        MBClient.sharedInstance().investorProductsRequest { (investorProducts) -> (Void) in
-//            if let investorProd = investorProducts {
-//                print(investorProd)
-//            } else {
-//                print("error")
-//            }
-//        }
-//    }
-//
-//
-    
 
-    
-    
-//    @IBAction func moneyBoxAction(_ sender: UIButton) {
-//        //oneOffPaymentRequest(amount: 10, inverstorProductId: 3289)
-//        MBClient.sharedInstance().oneOffPaymentRequest(amount: 10, inverstorProductId: 3289) { (moneyBox) -> (Void) in
-//            if let mb = moneyBox {
-//                print(mb)
-//            } else {
-//                print("error")
-//            }
-//        }
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

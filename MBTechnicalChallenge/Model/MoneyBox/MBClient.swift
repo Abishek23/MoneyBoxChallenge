@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+import Whisper
+import SVProgressHUD
 import AdSupport
 class MBClient : NSObject {
     // MARK: Properties
@@ -20,7 +21,11 @@ class MBClient : NSObject {
     
     
     func setupRequest(serviceURL:URL,method:HTTPMethod,authenticated:Bool,paramaters:[String:Any])->URLRequest?{
+        
+        //initialize new request
         var request = URLRequest(url: serviceURL)
+        
+        //configure request
         request.httpMethod = method.rawValue
         request.setValue(AppID.ID.rawValue, forHTTPHeaderField: HTTPHeaderField.appID.rawValue)
         request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
@@ -28,8 +33,13 @@ class MBClient : NSObject {
         request.setValue(ApiVersion.three.rawValue, forHTTPHeaderField: HTTPHeaderField.apiVersion.rawValue)
         request.setValue(AppVersion.four.rawValue, forHTTPHeaderField: HTTPHeaderField.appVersion.rawValue)
         request.timeoutInterval = TimeInterval(60)
+        
+        //parse paramters as JSON, set request body.
         guard let httpBody = try? JSONSerialization.data(withJSONObject: paramaters, options: []) else {return nil}
         request.httpBody = httpBody
+        
+        
+        //if request requires authentication add auth token
         if authenticated {
             guard let token = userInformation?.session.bearerToken else {return nil}
             let authToken = "Bearer \(token)"
@@ -41,7 +51,8 @@ class MBClient : NSObject {
     
     func loginRequest(email:String,password:String, completion:@escaping(UserInformation?, Error?)->(Void)) {
         //  let url = NSURL(string: MBConstants.TestServer+"/users/login")
-        guard  let serviceUrl = MBConstants.APIEndpoints.login else {return}
+             SVProgressHUD.show()
+        let serviceUrl = MBConstants.APIEndpoints.login
         let parameterDictionary = [MBConstants.APIParameterKey.email:email, MBConstants.APIParameterKey.password: password, MBConstants.APIParameterKey.idfa: MBConstants.APIParamterValue.idfa]
         
         guard let loginRequest = setupRequest(serviceURL: serviceUrl, method:.post, authenticated: false, paramaters: parameterDictionary) else {return }
@@ -79,12 +90,15 @@ class MBClient : NSObject {
     }
     
     func investorProductsRequest(completion:@escaping(InvestorProducts?, Error?)->(Void)) {
-        
-         guard let serviceUrl = MBConstants.APIEndpoints.thisweek else {return }
+        SVProgressHUD.show()
+    let serviceUrl = MBConstants.APIEndpoints.thisweek
    
-    guard let inverstorProductRequest = setupRequest(serviceURL: serviceUrl, method: .get, authenticated: true, paramaters: [:]) else {return}
+    guard let investorProductRequest = setupRequest(serviceURL: serviceUrl, method: .get, authenticated: true, paramaters: [:]) else {return}
         let session = URLSession.shared
-        session.dataTask(with: inverstorProductRequest) { (data, response, error) in
+        
+        //execute request
+        session.dataTask(with: investorProductRequest) { (data, response, error) in
+            //handle error
             guard error == nil else {
                 print(error!.localizedDescription)
                 completion(nil,error)
@@ -92,9 +106,7 @@ class MBClient : NSObject {
             }
             
             
-            if let response = response {
-                print(response)
-            }
+          //JSON parsing
             if let data = data {
                 do {
                     self.investorProducts = try JSONDecoder().decode(InvestorProducts.self, from: data)
@@ -114,9 +126,8 @@ class MBClient : NSObject {
     
 
     func oneOffPaymentRequest(amount : Int, inverstorProductId:Int, completion:@escaping(Moneybox?,Error?)->(Void)) {
-
-        guard  let serviceUrl = MBConstants.APIEndpoints.oneoffpayment else {return}
-        
+        SVProgressHUD.show()
+        let serviceUrl = MBConstants.APIEndpoints.oneoffpayment
         
         let parameterDictionary = [MBConstants.APIParameterKey.amount:amount, MBConstants.APIParameterKey.inverstorProductID: inverstorProductId]
         
@@ -124,17 +135,18 @@ class MBClient : NSObject {
         
         
         let session = URLSession.shared
+        
+        //excecute request
         session.dataTask(with: paymentRequest) { (data, response, error) in
+            
+            
+            //handle error
             guard error == nil else {
                 print(error!.localizedDescription)
                 completion(nil,error)
                 return
             }
-            
-            
-            if let response = response {
-                print(response)
-            }
+            // parse JSON
             if let data = data {
                 do {
                     let mb = try JSONDecoder().decode(Moneybox.self, from: data)
@@ -151,37 +163,32 @@ class MBClient : NSObject {
     
     
     
-    func logout() {
-
-        guard  let serviceUrl = MBConstants.APIEndpoints.logout else {return}
+    func logout(completion:@escaping(Bool, Error?)->(Void)) {
+        SVProgressHUD.show()
+        let serviceUrl = MBConstants.APIEndpoints.logout
         guard let logoutRequest = setupRequest(serviceURL: serviceUrl, method: .post, authenticated: true, paramaters: [:]) else {return}
         
+    
         let session = URLSession.shared
+        //execute request
         session.dataTask(with: logoutRequest) { (data, response, error) in
+            
+            //handle error
             guard error == nil else {
                 print(error!.localizedDescription)
-        
+                completion(false,error)
                 return
             }
-            
-            if let response = response {
-                print(response)
-            }
-            if let data = data {
-                do {
-                    let mb = try JSONDecoder().decode(Moneybox.self, from: data)
-                    print("Moneybox :\(mb)")
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
+            // else logout success
+              completion(true, nil)
+
             }.resume()
         
     }
     
 
     
-    
+    // Singleton
     class func sharedInstance() -> MBClient{
         struct Singleton {
             static var sharedInstance = MBClient()

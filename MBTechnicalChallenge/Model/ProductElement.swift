@@ -10,7 +10,7 @@ import Foundation
 struct ProductElement: Codable {
     let investorProductID: Int
     let investorProductType: String
-    let productID, moneybox, previousMoneybox, subscriptionAmount: Int
+    let productID, moneybox, subscriptionAmount: Int
     let planValue, sytd, transferInSytd, maximumDeposit: Int
     let totalContributions, totalReturnValue, totalReturnPercentage, cashInTransit: Int
     let residualCash, totalFees, totalReturnValueGross, pendingWithdrawal: Int
@@ -27,7 +27,7 @@ struct ProductElement: Codable {
         case investorProductType = "InvestorProductType"
         case productID = "ProductId"
         case moneybox = "Moneybox"
-        case previousMoneybox = "PreviousMoneybox"
+   
         case subscriptionAmount = "SubscriptionAmount"
         case planValue = "PlanValue"
         case sytd = "Sytd"

@@ -19,6 +19,7 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navItem.hidesBackButton = false
         guard let account = selectedAccount else {return}
         if account.investorProductType == "Isa" {
             self.navItem.title = "Stocks and Shares Isa"
@@ -34,56 +35,65 @@ class ProductViewController: UIViewController {
     @IBAction func incementMoneyBox(_ sender: UIButton) {
         
         
+        let alert = UIAlertController(title: "Confirm deposit", message: "Are you sure you want to deposit £\(MBConstants.APIParamterValue.fixedDeposit) into your moneybox?", preferredStyle: UIAlertControllerStyle.alert)
+      
+     
         
-          guard let account = selectedAccount else {return}
-        
-        if account.maximumDeposit > MBConstants.APIParamterValue.fixedDeposit {
-        
-        MBClient.sharedInstance().oneOffPaymentRequest(amount: MBConstants.APIParamterValue.fixedDeposit, inverstorProductId: account.investorProductID) { (moneyBox, error) -> (Void) in
-            DispatchQueue.main.async {
-                SVProgressHUD.show()
-            }
-            if error != nil {
-                DispatchQueue.main.async {
-                        SVProgressHUD.dismiss()
-                    let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            guard let account = self.selectedAccount else {return}
+            
+            if account.maximumDeposit > MBConstants.APIParamterValue.fixedDeposit {
                 
-                    // Show and hide a message after delay
-                    Whisper.show(whisper: message, to: self.navigationController!, action: .show)
-        
+                MBClient.sharedInstance().oneOffPaymentRequest(amount: MBConstants.APIParamterValue.fixedDeposit, inverstorProductId: account.investorProductID) { (moneyBox, error) -> (Void) in
+                    
+                    if error != nil {
+                        DispatchQueue.main.async {
+                            SVProgressHUD.dismiss()
+                            let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
+                            
+                            // Show and hide a message after delay
+                            Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                            
+                        }
+                    }
+                    
+                    
+                    if let mb = moneyBox {
+                        DispatchQueue.main.async {
+                            SVProgressHUD.dismiss()
+                            let message = Message(title: "Deposit Success", backgroundColor: .red)
+                            Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                            self.moneyboxLabel.text = "Your moneybox: £\(mb.moneybox)"
+                        }
+                        self.fetchInvestorProducts()
+                    }
+                    
+                    
+                    
+                    
                 }
-            }
-            
-            
-            if let mb = moneyBox {
+                
+                
+                
+                
+            } else {
+                
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    let message = Message(title: "Deposit Success", backgroundColor: .red)
+                    let message = Message(title: "Maximum deposit reached", backgroundColor: .red)
                     Whisper.show(whisper: message, to: self.navigationController!, action: .show)
-                           self.moneyboxLabel.text = "Your moneybox: £\(mb.moneybox)"
                 }
-                self.fetchInvestorProducts()
-            }
-   
-          
-
+                
+                
+                
+            }}))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
        
-            }
-            
-            
-            
-            
-            } else {
-            
-            DispatchQueue.main.async {
-               SVProgressHUD.dismiss()
-                let message = Message(title: "Maximum deposit reached", backgroundColor: .red)
-                Whisper.show(whisper: message, to: self.navigationController!, action: .show)
-            }
-            
-            
-            
-        }
     }
     
     
@@ -106,10 +116,10 @@ class ProductViewController: UIViewController {
                     for product in investorProducts.products {
                         if product.investorProductID == self.selectedAccount?.investorProductID {
                             self.selectedAccount = product
-                            self.moneyboxLabel.text = "Your moneybox: \(self.selectedAccount!.moneybox)"
+                            self.moneyboxLabel.text = "Your moneybox: £\(self.selectedAccount!.moneybox)"
                         }
                     }
-                    print(MBClient.sharedInstance().investorProducts?.products)
+  
                 }
                 
                 print(investorProducts)
@@ -117,8 +127,9 @@ class ProductViewController: UIViewController {
                 print("error occured")
                 
                 DispatchQueue.main.async {
-                    let message = Message(title: "Failed to refresh moneybox", backgroundColor: .red)
                     SVProgressHUD.dismiss()
+                    let message = Message(title: "Failed to refresh moneybox", backgroundColor: .red)
+                   
                     // Show and hide a message after delay
                     Whisper.show(whisper: message, to: self.navigationController!, action: .show)
                 }
