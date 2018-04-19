@@ -10,9 +10,6 @@ import UIKit
 import SVProgressHUD
 import Whisper
 class ProductViewController: UIViewController {
-    
-    
-    
     @IBOutlet weak var moneyboxLabel: UILabel!
     @IBOutlet weak var incrementMBOutlet: UIButton!
     var selectedAccount:ProductElement?
@@ -26,18 +23,12 @@ class ProductViewController: UIViewController {
         } else if account.investorProductType == "Gia" {
             navItem.title = "General Investment Account"
         }
+        self.moneyboxLabel.text = "Your moneybox: £\(selectedAccount!.moneybox)"
         
-          self.moneyboxLabel.text = "Your moneybox: £\(selectedAccount!.moneybox)"
-        
-
-        // Do any additional setup after loading the view.
     }
     @IBAction func incementMoneyBox(_ sender: UIButton) {
         
-        
         let alert = UIAlertController(title: "Confirm deposit", message: "Are you sure you want to deposit £\(MBConstants.APIParamterValue.fixedDeposit) into your moneybox?", preferredStyle: UIAlertControllerStyle.alert)
-      
-     
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             guard let account = self.selectedAccount else {return}
@@ -50,9 +41,8 @@ class ProductViewController: UIViewController {
                         DispatchQueue.main.async {
                             SVProgressHUD.dismiss()
                             let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
-                            
-                            // Show and hide a message after delay
-                            Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                            guard let navController = self.navigationController else {return }
+                            Whisper.show(whisper: message, to: navController, action: .show)
                             
                         }
                     }
@@ -62,29 +52,21 @@ class ProductViewController: UIViewController {
                         DispatchQueue.main.async {
                             SVProgressHUD.dismiss()
                             let message = Message(title: "Deposit Success", backgroundColor: .red)
-                            Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                            guard let navController = self.navigationController else {return }
+                            Whisper.show(whisper: message, to: navController, action: .show)
                             self.moneyboxLabel.text = "Your moneybox: £\(mb.moneybox)"
                         }
                         self.fetchInvestorProducts()
                     }
-                    
-                    
-                    
-                    
                 }
-                
-                
-                
                 
             } else {
                 
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                     let message = Message(title: "Maximum deposit reached", backgroundColor: .red)
-                    Whisper.show(whisper: message, to: self.navigationController!, action: .show)
-                }
-                
-                
+                    guard let navController = self.navigationController else {return }
+                    Whisper.show(whisper: message, to: navController, action: .show)                }
                 
             }}))
         
@@ -93,9 +75,8 @@ class ProductViewController: UIViewController {
         }))
         
         self.present(alert, animated: true, completion: nil)
-       
+        
     }
-    
     
     func fetchInvestorProducts(){
         MBClient.sharedInstance().investorProductsRequest { (investorProducts, error) -> (Void) in
@@ -103,15 +84,14 @@ class ProductViewController: UIViewController {
                 DispatchQueue.main.async {
                     let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
                     SVProgressHUD.dismiss()
-                    // Show and hide a message after delay
-                    Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                    guard let navController = self.navigationController else {return }
+                    Whisper.show(whisper: message, to: navController, action: .show)
                 }
             }
             
             if let investorProducts = investorProducts {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    
                     MBClient.sharedInstance().investorProducts = investorProducts
                     for product in investorProducts.products {
                         if product.investorProductID == self.selectedAccount?.investorProductID {
@@ -119,24 +99,22 @@ class ProductViewController: UIViewController {
                             self.moneyboxLabel.text = "Your moneybox: £\(self.selectedAccount!.moneybox)"
                         }
                     }
-  
+                    
                 }
                 
                 print(investorProducts)
             } else {
-                print("error occured")
                 
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                     let message = Message(title: "Failed to refresh moneybox", backgroundColor: .red)
-                   
-                    // Show and hide a message after delay
-                    Whisper.show(whisper: message, to: self.navigationController!, action: .show)
+                    guard let navController = self.navigationController else {return }
+                    Whisper.show(whisper: message, to: navController, action: .show)
                 }
                 
             }
-        
-    }
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -144,15 +122,15 @@ class ProductViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
