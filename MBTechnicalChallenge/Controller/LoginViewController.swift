@@ -38,38 +38,31 @@ class LoginViewController: UIViewController {
         if email.count > 0 && password.count > 0 {
             MBClient.sharedInstance().loginRequest(email: email , password: password) { (userInfo,error)  -> (Void) in
                 
-                DispatchQueue.main.async {
                     SVProgressHUD.show()
                     self.disableInputs()
-                    
-                }
-                
+               
                 if error != nil {
-                    DispatchQueue.main.async {
+                 
                         SVProgressHUD.dismiss()
                         let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
                         
                         guard let navController = self.navigationController else {return}
                         Whisper.show(whisper: message, to: navController, action: .show)
                         self.enableInputs()
-                    }
+                    
                 }
                 if let userInfo = userInfo {
-                    DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
                         self.performSegue(withIdentifier: "productsSegue", sender: sender)
                         self.enableInputs()
-                    }
                     
                 } else {
                     
-                    DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
                         let message = Message(title: "Login failed please try again", backgroundColor: .red)
                         guard let navController = self.navigationController else {return}
                         Whisper.show(whisper: message, to: navController, action: .show)
                         self.enableInputs()
-                    }
                     
                 }
                 

@@ -20,32 +20,27 @@ class ProductsViewController: UITableViewController {
         
         MBClient.sharedInstance().logout { (loggedOut, error) -> (Void) in
             if error != nil {
-                DispatchQueue.main.sync {
                     let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
                     SVProgressHUD.dismiss()
                     // Show and hide a message after delay
                     Whisper.show(whisper: message, to: self.navigationController!, action: .show)
-                }
+                
             }
             if loggedOut {
-                DispatchQueue.main.sync {
+            
                     SVProgressHUD.dismiss()
                     let vc = self.storyboard!.instantiateViewController(withIdentifier: "login") as! LoginViewController
                     self.present(vc, animated: true, completion: nil)
                     let message = Message(title: "Logged out successfully", backgroundColor: .red)
                     guard let navController = self.navigationController else {return}
                     Whisper.show(whisper: message, to: navController, action: .show)
-                }
+                
                 
             } else {
-                
-                DispatchQueue.main.sync {
                     let message = Message(title: "Logout failed", backgroundColor: .red)
                     SVProgressHUD.dismiss()
                     guard let navController = self.navigationController else {return}
                     Whisper.show(whisper: message, to: navController, action: .show)
-                }
-                
             }
         }
     }
@@ -64,33 +59,26 @@ class ProductsViewController: UITableViewController {
     @objc func fetchInvestorProducts(){
         MBClient.sharedInstance().investorProductsRequest { (investorProducts, error) -> (Void) in
             if error != nil {
-                DispatchQueue.main.sync {
+          
                     let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
                     SVProgressHUD.dismiss()
                     guard let navController = self.navigationController else {return}
                     Whisper.show(whisper: message, to: navController, action: .show)
-                }
+                
             }
             
             if let investorProducts = investorProducts {
-                DispatchQueue.main.sync {
                     SVProgressHUD.dismiss()
                     MBClient.sharedInstance().investorProducts = investorProducts
                     self.tableView.reloadData()
-                    
-                }
-                
                 print(investorProducts)
             } else {
                 print("error occured")
-                
-                DispatchQueue.main.sync {
                     let message = Message(title: "Failed to retrieve investor products", backgroundColor: .red)
                     SVProgressHUD.dismiss()
                     guard let navController = self.navigationController else {return}
                     Whisper.show(whisper: message, to: navController, action: .show)
-                }
-                
+              
             }
             
         }
@@ -102,13 +90,18 @@ class ProductsViewController: UITableViewController {
         }
         guard let products = MBClient.sharedInstance().investorProducts?.products else {return UITableViewCell() }
         let product = products[indexPath.row]
-        cell.label.layer.cornerRadius = 4
-        cell.label.clipsToBounds = true
-        if product.investorProductType == "Isa" {
-            cell.label.text = "Stocks and Shares ISA >"
-        } else {
-            cell.label.text = "General Investment Account >"
+        
+        DispatchQueue.main.async {
+            cell.label.layer.cornerRadius = 4
+            cell.label.clipsToBounds = true
+            if product.investorProductType == "Isa" {
+                cell.label.text = "Stocks and Shares ISA >"
+            } else {
+                cell.label.text = "General Investment Account >"
+            }
         }
+        
+      
         
         return cell
     }

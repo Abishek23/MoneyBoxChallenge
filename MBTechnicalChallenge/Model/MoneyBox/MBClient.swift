@@ -61,7 +61,10 @@ class MBClient : NSObject {
             
             guard error == nil else {
                 print(error!.localizedDescription)
-                completion(nil,error!)
+                DispatchQueue.main.async {
+                    completion(nil,error!)
+                }
+                
                 return
                 }
             
@@ -76,13 +79,19 @@ class MBClient : NSObject {
                     self.userInformation = userInfo
                     
                     print("UserInformationObject:\(String(describing: userInfo))")
-                    completion(userInfo, nil)
+                
+                    DispatchQueue.main.async {
+                        completion(userInfo,nil)
+                    }
                     
                     
                     
                 } catch {
                     print(error.localizedDescription)
-                    completion(nil, error)
+                    DispatchQueue.main.async {
+                          completion(nil, error)
+                    }
+                  
                 }
             }
             }.resume()
@@ -101,7 +110,10 @@ class MBClient : NSObject {
             //handle error
             guard error == nil else {
                 print(error!.localizedDescription)
-                completion(nil,error)
+                DispatchQueue.main.async {
+                      completion(nil,error)
+                }
+  
                 return
             }
             
@@ -111,11 +123,17 @@ class MBClient : NSObject {
                 do {
                     self.investorProducts = try JSONDecoder().decode(InvestorProducts.self, from: data)
                     print("InvestorProducts:\(self.investorProducts)")
-                    completion(self.investorProducts,nil)
+                    DispatchQueue.main.async {
+                         completion(self.investorProducts,nil)
+                    }
+                   
                 } catch {
                     
                     print(error.localizedDescription)
-                    completion(nil,error)
+                    DispatchQueue.main.async {
+                        completion(nil,error)
+                    }
+                    
                 }
             }
             }.resume()
@@ -151,10 +169,15 @@ class MBClient : NSObject {
                 do {
                     let mb = try JSONDecoder().decode(Moneybox.self, from: data)
                     print("Moneybox :\(mb)")
-                    completion(mb,nil)
+                    DispatchQueue.main.async {
+                            completion(mb,nil)
+                    }
+                  
                 } catch {
                     print(error.localizedDescription)
-                    completion(nil,error)
+                    DispatchQueue.main.async {
+                        completion(nil,error)
+                    }
                 }
             }
             }.resume()
@@ -176,11 +199,17 @@ class MBClient : NSObject {
             //handle error
             guard error == nil else {
                 print(error!.localizedDescription)
-                completion(false,error)
+                DispatchQueue.main.async {
+                     completion(false,error)
+                }
+ 
                 return
             }
             // else logout success
-              completion(true, nil)
+            DispatchQueue.main.async {
+                  completion(true, nil)
+            }
+            
 
             }.resume()
         
