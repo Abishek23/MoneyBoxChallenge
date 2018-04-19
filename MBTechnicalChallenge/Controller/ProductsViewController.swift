@@ -3,7 +3,7 @@
 //  MBTechnicalChallenge
 //
 //  Created by Abishek Gokal on 16/04/2018.
-//  Copyright © 2018 abishek. All rights reserved.
+//  Copyright © 2018 Abishek Gokal. All rights reserved.
 //
 
 import Foundation
@@ -59,7 +59,6 @@ class ProductsViewController: UITableViewController {
     @objc func fetchInvestorProducts(){
         MBClient.sharedInstance().investorProductsRequest { (investorProducts, error) -> (Void) in
             if error != nil {
-          
                     let message = Message(title: "Error:\(String(describing: error?.localizedDescription))", backgroundColor: .red)
                     SVProgressHUD.dismiss()
                     guard let navController = self.navigationController else {return}
@@ -100,7 +99,7 @@ class ProductsViewController: UITableViewController {
                 cell.label.text = "General Investment Account >"
             }
         }
-           
+        
         return cell
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
