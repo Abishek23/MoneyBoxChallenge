@@ -3,7 +3,7 @@
 //  MBTechnicalChallenge
 //
 //  Created by Abishek Gokal on 16/04/2018.
-//  Copyright © 2018 abishek. All rights reserved.
+//  Copyright © 2018 Abishek Gokal. All rights reserved.
 //
 
 import Foundation
