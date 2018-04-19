@@ -100,9 +100,7 @@ class ProductsViewController: UITableViewController {
                 cell.label.text = "General Investment Account >"
             }
         }
-        
-      
-        
+           
         return cell
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
