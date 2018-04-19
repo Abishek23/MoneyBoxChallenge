@@ -52,10 +52,9 @@ class MBClient : NSObject {
     func loginRequest(email:String,password:String, completion:@escaping(UserInformation?, Error?)->(Void)) {
         //  let url = NSURL(string: MBConstants.TestServer+"/users/login")
              SVProgressHUD.show()
-        let serviceUrl = MBConstants.APIEndpoints.login
         let parameterDictionary = [MBConstants.APIParameterKey.email:email, MBConstants.APIParameterKey.password: password, MBConstants.APIParameterKey.idfa: MBConstants.APIParamterValue.idfa]
         
-        guard let loginRequest = setupRequest(serviceURL: serviceUrl, method:.post, authenticated: false, paramaters: parameterDictionary) else {return }
+        guard let loginRequest = setupRequest(serviceURL: MBConstants.APIEndpoints.login, method:.post, authenticated: false, paramaters: parameterDictionary) else {return }
         let session = URLSession.shared
         session.dataTask(with: loginRequest) { (data, response, error) in
             
@@ -100,9 +99,7 @@ class MBClient : NSObject {
     
     func investorProductsRequest(completion:@escaping(InvestorProducts?, Error?)->(Void)) {
         SVProgressHUD.show()
-    let serviceUrl = MBConstants.APIEndpoints.thisweek
-   
-    guard let investorProductRequest = setupRequest(serviceURL: serviceUrl, method: .get, authenticated: true, paramaters: [:]) else {return}
+    guard let investorProductRequest = setupRequest(serviceURL: MBConstants.APIEndpoints.thisweek, method: .get, authenticated: true, paramaters: [:]) else {return}
         let session = URLSession.shared
         
         //execute request
@@ -145,11 +142,11 @@ class MBClient : NSObject {
 
     func oneOffPaymentRequest(amount : Int, inverstorProductId:Int, completion:@escaping(Moneybox?,Error?)->(Void)) {
         SVProgressHUD.show()
-        let serviceUrl = MBConstants.APIEndpoints.oneoffpayment
+      
         
         let parameterDictionary = [MBConstants.APIParameterKey.amount:amount, MBConstants.APIParameterKey.inverstorProductID: inverstorProductId]
         
-        guard let paymentRequest = setupRequest(serviceURL: serviceUrl, method: .post, authenticated: true, paramaters: parameterDictionary) else {return}
+        guard let paymentRequest = setupRequest(serviceURL: MBConstants.APIEndpoints.oneoffpayment, method: .post, authenticated: true, paramaters: parameterDictionary) else {return}
         
         
         let session = URLSession.shared
@@ -188,8 +185,8 @@ class MBClient : NSObject {
     
     func logout(completion:@escaping(Bool, Error?)->(Void)) {
         SVProgressHUD.show()
-        let serviceUrl = MBConstants.APIEndpoints.logout
-        guard let logoutRequest = setupRequest(serviceURL: serviceUrl, method: .post, authenticated: true, paramaters: [:]) else {return}
+      
+        guard let logoutRequest = setupRequest(serviceURL: MBConstants.APIEndpoints.logout, method: .post, authenticated: true, paramaters: [:]) else {return}
         
     
         let session = URLSession.shared
